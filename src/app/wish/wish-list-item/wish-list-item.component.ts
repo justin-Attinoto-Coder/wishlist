@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { WishItem } from 'src/shared/models/wishItem';
-import {EventService} from './../../shared/services/EventService';
+import {EventService} from './../../../shared/services/EventService';
 
 
 @Component({
