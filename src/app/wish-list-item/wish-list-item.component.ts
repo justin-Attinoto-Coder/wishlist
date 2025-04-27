@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { WishItem } from 'src/shared/models/wishItem';
+import events from './../../shared/services/EventService';
+
 
 @Component({
   selector: 'wish-list-item',
@@ -20,6 +22,10 @@ export class WishListItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  removeWish() {
+    events.emit('removeWish', this.wishText);
   }
 
   toggleFullfilled() {
