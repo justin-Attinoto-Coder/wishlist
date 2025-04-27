@@ -9,15 +9,12 @@ import events from './../../shared/services/EventService';
   styleUrls: ['./wish-list-item.component.css']
 })
 export class WishListItemComponent implements OnInit {
-  @Input() wishText! : string;
-
-  @Input() fullfilled! : boolean;
-  @Output() fullfilledChange = new EventEmitter<boolean>();
+  @Input() wish! : WishItem;
 
   get cssClasses() {
     //return this.fullfilled ? ['strikeout','text-muted'] : [];
 
-    return {'strikeout text-muted': this.fullfilled};
+    return {'strikeout text-muted': this.wish.isComplete};
   }
   constructor() { }
 
@@ -25,12 +22,11 @@ export class WishListItemComponent implements OnInit {
   }
 
   removeWish() {
-    events.emit('removeWish', this.wishText);
+    events.emit('removeWish', this.wish);
   }
 
   toggleFullfilled() {
-    this.fullfilled = !this.fullfilled;
-    this.fullfilledChange.emit(this.fullfilled);
+    this.wish.isComplete = !this.wish.isComplete;
   }
 
 }
